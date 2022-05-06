@@ -15,9 +15,11 @@ pipeline {
         }
         
          stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'kubernetes-dashboard-wsl-ubuntu', serverUrl: 'https://kubernetes.docker.internal:6443']) {
-      sh 'kubectl get ns --all-namespaces'
-    }
+             steps {
+                 withKubeConfig([credentialsId: 'kubernetes-dashboard-wsl-ubuntu', serverUrl: 'https://kubernetes.docker.internal:6443']) {
+                 sh 'kubectl get ns --all-namespaces'
+                               }
+             }
   
 }
     }
